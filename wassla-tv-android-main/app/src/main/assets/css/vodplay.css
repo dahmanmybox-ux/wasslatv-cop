@@ -1,4 +1,0 @@
-/* ===== تشغيل الأفلام والمسلسلات بملء الشاشة ===== */
-body.cine-play section{position:fixed!important;inset:0;z-index:30;background:#000}
-body.cine-play #player{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;padding:12px}
-body.cine-play #player video{flex:1;min-height:0;width:100%;object-fit:contain;background:#000;border:0}
