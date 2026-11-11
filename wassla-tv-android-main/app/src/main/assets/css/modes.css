@@ -1,0 +1,9 @@
+/* ===== نمط TiviMate: مجموعات | قنوات | معاينة ===== */
+#tmg{display:none}
+body.tm main{grid-template-columns:200px minmax(280px,380px) 1fr}
+body.tm main:has(#side.hide) #tmg{display:none}
+body.tm #tmg{display:flex;flex-direction:column;overflow-y:auto;background:var(--panel);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-inline-end:1px solid var(--edge,var(--line))}
+body.tm #tmg button{background:none;color:var(--ink);border-radius:0;text-align:start;padding:12px 14px;border:0;border-bottom:1px solid var(--line);font-size:14.5px}
+body.tm #tmg button:hover{background:var(--sel)}
+body.tm #tmg button.on{background:var(--acc);color:#fff;font-weight:700}
+body.tm .tools select#grp{display:none}

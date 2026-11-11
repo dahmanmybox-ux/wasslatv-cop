@@ -1,0 +1,68 @@
+/* ===== look.css (15.1.0): لغة بصرية موحّدة =====
+   أساس أسود + شعار متحرك في كل حالة انتقالية، بطاقات متطابقة، ثلاثة مقاسات للزوايا (8 / 16 / 24 + أقراص)، إطار تركيز ذهبي واحد. */
+:root{
+  --w-rs:8px;--w-rm:16px;--w-rl:24px;--w-focus:#f5b04c;
+  --w-card:linear-gradient(180deg,#04201bcc,#03120fe6);--w-card-bd:rgba(61,201,174,.38);
+  --w-black:radial-gradient(ellipse at 50% 42%,rgba(14,124,107,.20) 0,#000 62%);
+  --idle-art:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 640 360%22%3E%3Cdefs%3E%3CradialGradient id=%22g%22 cx=%2250%25%22 cy=%2246%25%22 r=%2260%25%22%3E%3Cstop offset=%220%22 stop-color=%22%230e7c6b%22 stop-opacity=%22.22%22/%3E%3Cstop offset=%221%22 stop-color=%22%23000%22/%3E%3C/radialGradient%3E%3ClinearGradient id=%22l%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2317b79c%22/%3E%3Cstop offset=%221%22 stop-color=%22%230a5448%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22640%22 height=%22360%22 fill=%22%23000%22/%3E%3Crect width=%22640%22 height=%22360%22 fill=%22url%28%23g%29%22/%3E%3Crect x=%22282%22 y=%22142%22 width=%2276%22 height=%2276%22 rx=%2219%22 fill=%22url%28%23l%29%22 stroke=%22%237ff3dc%22 stroke-width=%222%22/%3E%3Cpolygon points=%22305%2C160 305%2C200 340%2C180%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22349%22 cy=%22153%22 r=%225%22 fill=%22%23f5b04c%22/%3E%3C/svg%3E");
+}
+
+/* ---- الشعار المتحرك: حلقة رفيعة تدور وتتغير ألوانها، والشعار يخفق ببطء ---- */
+.lgw{position:relative;width:min(24vh,176px);aspect-ratio:1;display:grid;place-items:center}
+.lgw .lgr{position:absolute;inset:0;width:100%;height:100%;animation:lgspin 2.6s linear infinite}
+.lgw .lgr circle{fill:none;stroke-width:3;stroke-linecap:round}
+.lgw .lgt{stroke:rgba(255,255,255,.12)}
+.lgw .lgc{stroke-dasharray:170 421;animation:lgcol 6s linear infinite}
+.lgw .sl-mark,.lgw .lgm{width:60%;height:60%;animation:lgbeat 3.4s ease-in-out infinite}
+@keyframes lgspin{to{transform:rotate(360deg)}}
+@keyframes lgbeat{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
+@keyframes lgcol{0%,100%{stroke:#3dc9ae}25%{stroke:#7ff3dc}50%{stroke:#f5b04c}75%{stroke:#ff8f6b}}
+@keyframes slpop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes slfade{to{opacity:1}}
+.lgw .lgx{display:none;position:absolute;right:4%;bottom:4%;width:28%;aspect-ratio:1;border-radius:50%;background:#e5484d;color:#fff;border:3px solid #000;place-items:center;font-size:clamp(16px,3vh,24px);font-weight:800}
+@media (prefers-reduced-motion:reduce){.lgw .lgr,.lgw .lgc,.lgw .sl-mark,.lgw .lgm{animation:none}}
+
+/* ---- الإقلاع ---- */
+#splash{background:var(--w-black),#000;gap:0}
+#splash .lgw{animation:slpop .9s ease-out both}
+#splash .sl-t{margin-top:28px;font-size:32px;font-weight:800;letter-spacing:1px;opacity:0;animation:slfade .8s .5s ease-out forwards}
+#splash .sl-v{margin-top:10px;font-size:14px;color:#7fa8a0;min-height:18px;opacity:0;animation:slfade .8s .8s ease-out forwards}
+
+/* ---- الانتظار بين القنوات والفشل: أسود + شعار، بلا فوضى ---- */
+#ldg{background:var(--w-black),#000!important;gap:0}
+#ldg .lgw{width:min(20vh,140px)}
+#ldg img{display:none!important}
+#ldg .ldn{margin-top:24px;font-size:clamp(18px,2.3vw,26px);font-weight:700;color:#d9efe9;max-width:80%;line-height:1.4}
+#ldg .lds{margin-top:8px;font-size:clamp(15px,1.8vw,19px);color:#8fb9b0;max-width:80%}
+#ldg .lds:empty{display:none}
+#ldg .ldh{display:none;margin-top:14px;font-size:15px;color:#7fa8a0}
+body.tv #ldg.bad .ldh{display:block}
+#ldg.bad .lds{color:#ffb4b4;font-size:clamp(18px,2.2vw,22px);font-weight:700}
+#ldg.bad .lgr circle{animation:none;stroke:#e5484d}
+#ldg.bad .lgr{animation-play-state:paused;opacity:.55}
+#ldg.bad .lgm{animation:none;opacity:.45}
+#ldg.bad .lgx{display:grid}
+#ldg .ldb{margin-top:16px;gap:12px}
+#ldg .ldb button{min-width:140px;min-height:46px;font-size:17px;border-radius:999px}
+body.tv #ldg.bad .ldb{display:none!important}
+
+/* ---- بطاقتان متطابقتان: القائمة + المعاينة ---- */
+#rmenu .mb{align-items:stretch;gap:24px}
+#rmenu .ml,#rmenu .mp{border:1px solid var(--w-card-bd);border-radius:var(--w-rm);background:var(--w-card);box-shadow:0 12px 34px rgba(0,0,0,.4);overflow:hidden}
+#rmenu .mp{padding:16px;gap:16px;justify-content:flex-start}
+#rmenu .pv{border-radius:12px;background:#000}
+#rmenu .mi{background:transparent;border:0;border-radius:0;box-shadow:none;padding:14px 0 0;border-top:1px solid rgba(61,201,174,.22)}
+body.rcv #player video.pvid{border:0;border-radius:12px;box-shadow:none}
+#rmenu .rows{padding:8px}
+#rmenu .r{border-bottom:0;border-radius:12px;margin-bottom:4px}
+#rmenu .r.sel{background:linear-gradient(90deg,#12a58d,#0b6154);color:#fff;font-weight:800;outline:3px solid var(--w-focus);outline-offset:-3px;box-shadow:0 0 0 4px rgba(245,176,76,.22)}
+#rmenu .rhead .h svg{vertical-align:-5px;margin-inline-end:8px}
+
+/* ---- الحواف: ثلاثة مقاسات فقط ---- */
+#rbanner{border-radius:var(--w-rm)}
+#rbanner .rn{border-radius:var(--w-rs)}
+#rnum{border-radius:var(--w-rm)}
+#rtoast,#rexit{border-radius:999px}
+#qp{border-top-left-radius:var(--w-rl);border-top-right-radius:var(--w-rl)}
+#st .snv button{border-radius:var(--w-rm)}
+#st .snv button.on{border-color:var(--w-focus)}

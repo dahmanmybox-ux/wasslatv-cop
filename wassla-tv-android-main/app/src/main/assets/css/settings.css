@@ -1,0 +1,50 @@
+/* ===== الإعدادات + لوحة المفاتيح + تنبيه الملفات الجديدة ===== */
+#st{display:none;position:fixed;inset:0;z-index:80;flex-direction:column;background:radial-gradient(circle at 70% 10%,#0e6b5b 0,#06231e 55%,#030d0b 100%);color:#fff}
+#st.on{display:flex}
+#st .sth{display:flex;align-items:center;gap:16px;padding:16px 28px;background:linear-gradient(90deg,#0a5448,#0e7c6b);border-bottom:2px solid #3dc9ae}
+#st .stt{font-size:26px;font-weight:800;color:#f5b04c}
+#st .stm{flex:1;font-size:16px;color:#d2efe9}
+#st .stb{flex:1;overflow-y:auto;padding:16px 28px;display:flex;flex-direction:column;gap:10px}
+#st .srow{display:flex;align-items:center;gap:14px;width:100%;text-align:start;padding:14px 18px;border-radius:12px;border:2px solid #1f8f7c;background:#04201b99;color:#fff;font-size:19px}
+#st .srow i{font-style:normal;font-size:22px;min-width:56px;text-align:center;color:#f5b04c}
+#st .srow .sl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#st .srow .ss{color:#9fcfc6;font-size:14px;max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#st .srow.danger{border-color:#c0505a}
+#st .sep{padding:10px 6px 0;color:#f5b04c;font-size:15px}
+#st .stf{padding:8px 28px;font-size:13px;color:#9fcfc6;border-top:1px solid #1f8f7c}
+#kb{width:min(940px,96vw)}
+#kb h3{margin:0 0 8px}
+#kb .kbv{min-height:46px;font-size:24px;padding:8px 12px;border:2px solid #3dc9ae;border-radius:10px;word-break:break-all;margin-bottom:10px;direction:auto}
+#kb .kbr{display:flex;gap:6px;justify-content:center;margin-bottom:6px}
+#kb .k{min-width:52px;height:50px;font-size:22px;border-radius:8px;padding:0 10px;flex:0 0 auto}
+#kb .k.w{min-width:110px}
+#kb .k.ww{min-width:240px}
+#kb .k.ok{background:#0e7c6b;color:#fff;font-weight:700}
+
+/* ----- معاينة البث أثناء تعديل القنوات ----- */
+#stpv{display:none;position:fixed;top:96px;inset-inline-end:24px;width:340px;aspect-ratio:16/9;border:3px solid #f5b04c;border-radius:8px;background:#000;color:#9fcfc6;z-index:85;align-items:center;justify-content:center;font-size:14px}
+#st.pv #stpv{display:flex}
+#st.pv .stb{padding-inline-end:392px}
+body.stprev section{z-index:90!important;background:transparent!important;pointer-events:none}
+body.stprev #rbanner,body.stprev #rnum,body.stprev #rtoast,body.stprev #ldg,body.stprev #osd,body.stprev #rmenu{display:none!important}
+body.stprev #player{background:transparent!important}
+
+/* ===== تخطيط الإعدادات على نمط IPTVnator: شريط أقسام جانبي + صفوف (عنوان · وصف · مفتاح) ===== */
+#st .stw{flex:1;display:flex;min-height:0}
+#st .snv{width:270px;flex:none;display:flex;flex-direction:column;gap:6px;padding:18px 14px;background:#04120fd9;border-inline-end:1px solid #1f8f7c66;overflow-y:auto}
+#st .snv button{display:flex;align-items:center;gap:12px;width:100%;text-align:start;padding:12px 14px;border-radius:12px;border:2px solid transparent;background:transparent;color:#d2efe9;font-size:18px}
+#st .snv button i{font-style:normal;min-width:26px;text-align:center;font-size:20px}
+#st .snv button.on{background:#0e7c6b;color:#fff;font-weight:800;border-color:#3dc9ae}
+#st .stb{max-width:980px;margin-inline:auto;width:100%;padding-inline:var(--w-safe);gap:0}
+#st .srow{border:0;border-bottom:1px solid #1f8f7c55;border-radius:0;background:transparent;padding:16px 8px;gap:16px}
+#st .srow:focus{background:#0a544899;border-radius:12px}
+#st .srow i{min-width:40px}
+#st .srow .sx{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+#st .srow .sl{font-size:20px;font-weight:800;white-space:normal}
+#st .srow .ss{max-width:none;white-space:normal;color:#9fcfc6;font-size:15px;line-height:1.5}
+#st .srow .sc{font-style:normal;flex:none;min-width:150px;text-align:center;padding:9px 14px;border:2px solid #3dc9ae;border-radius:8px;font-size:16px}
+#st .srow .sc.sw{min-width:0;width:54px;height:30px;padding:0;border-radius:999px;position:relative;background:#04201b}
+#st .srow .sc.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:#9fcfc6;transition:.15s}
+#st .srow .sc.sw.on{background:#0e7c6b}
+#st .srow .sc.sw.on::after{inset-inline-start:27px;background:#f5b04c}
+#st .sep{padding:18px 8px 6px;font-size:16px;font-weight:800}
