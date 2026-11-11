@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "note": "Starter list. Order = channel numbers. Use 'urls' for direct stream links (first working one is used) or 'web' for an official web page.",
+  "channels": [
+    { "id": "entv-canal-algerie", "name": "Canal Algérie", "group": "جزائرية", "web": "https://www.entv.dz/live-canal-algerie/" },
+    { "id": "aljazeera-ar", "name": "الجزيرة", "group": "أخبار", "web": "https://www.youtube.com/embed/0zc9dACzJYY?autoplay=1&rel=0" },
+    { "id": "skynews-ar", "name": "سكاي نيوز عربية", "group": "أخبار", "web": "https://www.youtube.com/embed/DTuF6hCLCGw?autoplay=1&rel=0" },
+    { "id": "alarabiya", "name": "العربية", "group": "أخبار", "web": "https://www.youtube.com/embed/h9gGE5QxanU?autoplay=1&rel=0" }
+  ]
+}

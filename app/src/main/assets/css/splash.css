@@ -1,0 +1,12 @@
+/* ===== الشاشة الافتتاحية (أندرويد) ===== */
+#splash{display:none;position:fixed;inset:0;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:linear-gradient(180deg,#0a3b34,#030d0b);color:#fff;transition:opacity .45s}
+html.droid #splash{display:flex}
+#splash.gone{opacity:0;pointer-events:none}
+#splash .sl-mark{width:128px;height:128px;animation:slpop .9s ease-out both}
+#splash .sl-t{font-size:34px;font-weight:800;letter-spacing:1px}
+#splash .sl-t b{color:#f5b04c}
+#splash .sl-bar{width:220px;height:4px;border-radius:2px;background:#ffffff26;overflow:hidden}
+#splash .sl-bar i{display:block;height:100%;width:40%;border-radius:2px;background:#f5b04c;animation:slbar 1.4s ease-in-out infinite}
+#splash .sl-v{font-size:14px;color:#9fcfc6;min-height:18px}
+@keyframes slpop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes slbar{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}

@@ -1,0 +1,16 @@
+/* ===== نمط Smarters: شاشة رئيسية بمربعات ===== */
+#smhome{display:none}
+body.sm main{position:relative}
+#smhome{position:absolute;inset:0;z-index:20;flex-direction:column;gap:22px;padding:28px 34px;overflow:auto;background:radial-gradient(circle at 30% 20%,rgba(21,168,143,.35),transparent 55%),radial-gradient(circle at 80% 90%,rgba(224,144,43,.22),transparent 50%),var(--bg)}
+#smhome .smt{display:flex;align-items:baseline;gap:16px}
+#smhome .smt b{font-size:30px;font-weight:800}
+#smhome .smt span{margin-inline-start:auto;color:var(--mute);font-size:16px}
+#smhome .smg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+#smhome .smk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:150px;border-radius:20px;background:var(--panel);border:1px solid var(--edge,var(--line));color:var(--ink);box-shadow:0 6px 24px #0002;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:transform .15s,border-color .15s}
+#smhome .smk:hover,#smhome .smk:focus-visible{transform:translateY(-4px);border-color:var(--acc)}
+#smhome .smk i{font-style:normal;font-size:46px}
+#smhome .smk b{font-size:19px}
+#smhome .smk small{color:var(--mute)}
+#smhome .smk.off{opacity:.4;pointer-events:none}
+#smback{display:none}
+body.sm #smback{display:block;flex:none;padding:7px 11px}
