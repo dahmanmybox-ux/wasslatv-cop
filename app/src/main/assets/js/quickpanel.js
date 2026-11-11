@@ -3,6 +3,15 @@
   const el=$('qp'),row=$('qpr'),hint=$('lhint');
   let on=false,idx=0,hT=null;
   const close=()=>{on=false;el.classList.remove('on');hintLive()};
+  function syncMeta(){
+    const srcName = (lists.find(l=>l.id===active) || {name:'المصدر'}).name;
+    const srcEl = document.getElementById('qpsrc');
+    const chEl = document.getElementById('qpchannel');
+    const favEl = document.getElementById('qpfav');
+    if (srcEl) srcEl.textContent = srcName;
+    if (chEl) chEl.textContent = curUrl ? (shown.find(i=>i.url===curUrl)?.name || 'القناة الحالية') : 'القناة';
+    if (favEl) favEl.textContent = curUrl && favs.has(curUrl) ? 'مفضلة' : 'غير مفضلة';
+  }
   const items=[
     {i:'📺',l:'القنوات',run:()=>{close();if(window.__rcvOpen)__rcvOpen()}},
     {i:'🛰',l:'المصادر',run:()=>{close();if(window.__rcvOpenSources)__rcvOpenSources()}},
@@ -21,7 +30,7 @@
       row.appendChild(b);
     });
   }
-  function open(){on=true;idx=0;el.classList.add('on');paint()}
+  function open(){on=true;idx=0;el.classList.add('on');syncMeta();paint()}
   document.addEventListener('keydown',e=>{
     if(!on)return;
     e.preventDefault();e.stopPropagation();

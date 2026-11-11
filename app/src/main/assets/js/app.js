@@ -8,9 +8,9 @@ const DB={
 
 // ================== القنوات المدمجة (يمكنك تعديلها هنا) ==================
 const BUILT_IN_M3U = `#EXTM3U
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EPTV_logo.svg/200px-EPTV_logo.svg.png" group-title="قنوات جزائرية",الجزائرية 1
+#EXTINF:-1 group-title="قنوات جزائرية",الجزائرية 1
 https://example.com/algerie1.m3u8
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Logo_El_Heddaf_TV.png/200px-Logo_El_Heddaf_TV.png" group-title="قنوات رياضية",الهداف TV
+#EXTINF:-1 group-title="قنوات رياضية",الهداف TV
 https://example.com/elheddaf.m3u8
 #EXTINF:-1 group-title="قنوات إخبارية",الجزيرة
 https://example.com/aljazeera.m3u8

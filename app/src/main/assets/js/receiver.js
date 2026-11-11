@@ -124,13 +124,24 @@
   function place(){if(!open)return;const r=pv.getBoundingClientRect(),s=v.style;s.position='fixed';s.left=r.left+'px';s.top=r.top+'px';s.width=r.width+'px';s.height=r.height+'px'}
   window.addEventListener('resize',place);
   function build(){
+    updateHeaderMeta();
     if(level==='sources'){panel=srcData();return buildPanel()}
     if(level==='cats'){panel=catData();return buildPanel()}
     rows.textContent='';const fr=document.createDocumentFragment();
     shown.slice(0,1500).forEach((it,i)=>{
       const r=document.createElement('div');r.className='r'+(it.url===curUrl?' cur':'');
       r.innerHTML='<span class="n">'+numOf(it,i)+'</span><span class="t"></span><span class="s"></span>';
-      {const sp=document.createElement('span');sp.textContent=it.name;r.children[1].appendChild(sp)}r.children[2].textContent=favs.has(it.url)?'★':'';
+      const t=r.children[1],sp=document.createElement('span');
+      if(it.logo){
+        const logo=document.createElement('img');
+        logo.loading='lazy';
+        logo.alt='';
+        logo.src=it.logo;
+        logo.onerror=()=>{logo.remove();};
+        t.appendChild(logo);
+      }
+      const name=document.createElement('span');name.textContent=it.name;name.className='chname';t.appendChild(name);
+      r.children[2].textContent=favs.has(it.url)?'★':'';
       r.onclick=e=>{e.stopPropagation();closeL();play(it)};fr.appendChild(r);
     });
     rows.appendChild(fr);const o=$('grp').selectedOptions[0];
@@ -149,6 +160,21 @@
     if(it){mi.querySelector('b').textContent=numOf(it,sel)+' · '+it.name;mi.querySelector('small').textContent=it.group||'';if(it.logo){g.src=it.logo;g.style.display=''}else g.style.display='none'}
     else{mi.querySelector('b').textContent='لا توجد قنوات في هذه الفئة';mi.querySelector('small').textContent='';g.style.display='none'}
   }
+  function updateHeaderMeta(){
+    const currentList = (lists || []).find(x => x.id === active) || {name:'المصدر'};
+    const srcName = rm.querySelector('.source-name');
+    const catName = rm.querySelector('.category-name');
+    const catCount = rm.querySelector('.category-count');
+    if (srcName) srcName.textContent = currentList.name || 'المصدر';
+    const groupLabel = ($('grp') && $('grp').selectedOptions && $('grp').selectedOptions[0]) ? $('grp').selectedOptions[0].textContent : 'كل القنوات';
+    if (catName) catName.textContent = groupLabel === 'كل المجموعات (0)' ? 'كل القنوات' : groupLabel;
+    const totalGroups = $('grp') ? [...$('grp').options].filter(o => !o.value.startsWith('__') && o.value && o.value !== '').length : 0;
+    if (catCount) {
+      const idx = $('grp') ? [...$('grp').options].findIndex(o => o.value === $('grp').value) : -1;
+      catCount.textContent = totalGroups > 1 && idx >= 0 ? `${idx + 1}/${totalGroups}` : '';
+      catCount.style.display = totalGroups > 1 ? 'inline-flex' : 'none';
+    }
+  }
   function renderHead(){[...headEl.children].forEach((h,i)=>h.classList.toggle('sel',zone==='head'&&i===hIdx))}
   function renderHint(){
     const c=window.__caps||{};let h;
@@ -159,8 +185,8 @@
     hintEl.innerHTML=h.map(x=>'<span>'+x+'</span>').join('')+(c.color&&level==='rows'&&zone==='rows'?'<span><u class="c1"></u>مفضلة</span>':'');
   }
   document.addEventListener('caps',renderHint);
-  function setZone(z){zone=z;rm.classList.toggle('z-rows',z==='rows');rm.classList.toggle('z-head',z==='head');renderHead();mark();renderHint()}
-  function openL(){open=true;level='rows';nav=[];hIdx=0;build();sel=Math.max(0,shown.findIndex(i=>i.url===curUrl));document.body.classList.add('menu');rm.classList.add('on');v.classList.add('pvid');rb.classList.remove('on');clock();place();setZone('rows')}
+  function setZone(z){zone=z;rm.classList.toggle('z-rows',z==='rows');rm.classList.toggle('z-head',z==='head');renderHead();mark();renderHint();updateHeaderMeta();}
+  function openL(){open=true;level='rows';nav=[];hIdx=0;build();sel=Math.max(0,shown.findIndex(i=>i.url===curUrl));document.body.classList.add('menu');rm.classList.add('on');v.classList.add('pvid');rb.classList.remove('on');clock();place();setZone('rows');updateHeaderMeta();}
   function closeL(){open=false;rm.classList.remove('on');document.body.classList.remove('menu');v.classList.remove('pvid');v.style.cssText=''}
   function favSel(){const it=shown[sel];if(!it)return;const s=sel;toggleFav(it.url);build();sel=Math.min(s,Math.max(0,rows.children.length-1));mark()}
   function cycleGroup(d){

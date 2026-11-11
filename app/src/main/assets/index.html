@@ -27,7 +27,7 @@
 <body>
 <script>if(window.Android)document.documentElement.classList.add('droid')</script>
 <div id="splash"><div class="lgw"><svg class="lgr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle class="lgt" cx="100" cy="100" r="94"/><circle class="lgc" cx="100" cy="100" r="94"/></svg><svg class="sl-mark" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="slg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b79c"/><stop offset="1" stop-color="#0a5448"/></linearGradient></defs><rect x="10" y="10" width="88" height="88" rx="22" fill="url(#slg)" stroke="#7ff3dc" stroke-width="2"/><polygon points="37,32 37,76 76,54" fill="#fff"/><circle cx="85" cy="23" r="6" fill="#f5b04c"/></svg></div><div class="sl-t">وصلة <b>TV</b></div><div class="sl-v" id="slv"></div></div>
-<div id="qp"><div class="qpt">القائمة السريعة</div><div class="qpr" id="qpr"></div><div class="qph">← → تنقل · OK اختيار · رجوع: إغلاق (مرتان = خروج)</div></div>
+<div id="qp"><div class="qpt">القائمة السريعة</div><div class="qpr" id="qpr"></div><div class="qpi"><span id="qpsrc">المصدر</span><span id="qpchannel">القناة</span><span id="qpfav">المفضلة</span></div><div class="qph">← → تنقل · OK اختيار · رجوع: إغلاق (مرتان = خروج)</div></div>
 <div id="lhint"></div>
 
 <div id="updbar" class="hide">
@@ -60,7 +60,12 @@
     <div id="rnum"></div>
     <div id="rtoast"></div>
     <div id="rmenu">
-      <div class="mh"><span class="mt">📡 الريسيفر</span><span class="mg"></span><span class="mc"></span></div>
+      <div class="mh">
+        <span class="appmark" aria-label="وصلة TV"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="currentColor" opacity=".18"></rect><path d="M12 9v14l11-7z" fill="currentColor"></path></svg></span>
+        <b class="source-name">المصدر</b>
+        <b class="category-name">كل القنوات</b><small class="category-count">0</small>
+        <span class="mc"></span>
+      </div>
       <div class="rhead" id="rhead"><span class="h" data-h="sources"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>المصادر</span></div>
       <div class="mb">
         <div class="ml"><div class="rows"></div></div>
