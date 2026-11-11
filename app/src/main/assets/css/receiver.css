@@ -5,8 +5,9 @@ body.rcv section{position:fixed!important;inset:0;background:#000;z-index:5}
 body.rcv.menu section{background:linear-gradient(160deg,#0e7c6b,#0a3b34 55%,#04120f)}
 body.rcv #player{position:absolute;inset:0;display:block;cursor:pointer}
 body.rcv #player.hide{display:none!important}
-body.rcv #player video{width:100%;height:100%;object-fit:contain;background:#000;border:0;border-radius:0;box-shadow:none;display:block}
+body.rcv #player video{width:100%;height:100%;max-height:none;object-fit:contain;background:#000;border:0;border-radius:0;box-shadow:none;display:block}
 body.rcv #player video.pvid{border:3px solid #3dc9ae;border-radius:4px;box-shadow:0 0 0 2px #06332c,0 10px 30px #000a;object-fit:cover}
+body.rcv.menu #player video.pvid{z-index:44;pointer-events:none}
 body.rcv #msg{position:absolute;bottom:150px;inset-inline:0;text-align:center;z-index:30}
 #rbanner{position:absolute;inset-inline:3%;bottom:4%;display:none;flex-direction:column;border-radius:6px;overflow:hidden;z-index:40;border:2px solid #3dc9ae;background:linear-gradient(180deg,#15a88f,#0a5448 55%,#062f28);color:#fff;box-shadow:0 10px 40px rgba(0,0,0,.6)}
 #rbanner.on{display:flex}
@@ -43,7 +44,7 @@ body.rcv #msg{position:absolute;bottom:150px;inset-inline:0;text-align:center;z-
 #rmenu .r.cur .t::after{content:" ▶";color:#3dc9ae}
 #rmenu .r.sel{background:linear-gradient(90deg,#2fd1b0,#0e8a76);box-shadow:inset 0 0 0 1px #d6fff5}
 #rmenu .mp{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0;width:42%;background:#04120f99;border:2px solid #1f8f7c;border-radius:4px;padding:16px;justify-content:flex-start}
-#rmenu .pv{width:100%;aspect-ratio:16/9;border-radius:12px;background:#000}
+#rmenu .pv{position:relative;z-index:45;width:100%;aspect-ratio:16/9;border-radius:12px;background:transparent;pointer-events:none}
 #rmenu .mi{display:flex;align-items:center;gap:14px;padding:12px 16px;background:transparent;border:0;border-radius:0;box-shadow:none;min-height:68px;border-top:1px solid rgba(61,201,174,.22)}
 #rmenu .mi img{width:54px;height:54px;object-fit:contain;background:#ffffff22;border-radius:6px}
 #rmenu .mi b{display:block;font-size:22px}
@@ -78,8 +79,9 @@ body.rcv #msg{position:absolute;bottom:150px;inset-inline:0;text-align:center;z-
 /* ----- تحسين الصف المحدد: نص داكن واضح + رقم ثابت + هوامش آمنة + تمرير الاسم الطويل ----- */
 #rmenu .mh,#rmenu .mb,#rmenu .mf,#rmenu .tabs,#rmenu .rhead{padding-inline:var(--w-safe)}
 #rmenu .r .n{flex:none;min-width:76px;box-sizing:border-box}
-#rmenu .r .t{display:block}
-#rmenu .r .t>span{display:inline-block;white-space:nowrap}
+#rmenu .r .t{display:flex;align-items:center}
+#rmenu .r .t>span{display:block;white-space:nowrap;min-width:0}
+#rmenu .r .t .chname{flex:1}
 #rmenu .r.sel{background:linear-gradient(90deg,#f5b04c,#ffd27a);color:#1a1100;font-weight:800;outline:3px solid #fff;outline-offset:-3px;box-shadow:0 0 0 3px #f5b04c66}
 #rmenu .r.sel .n{background:#04201b;color:#f5b04c}
 #rmenu .r.sel .s,#rmenu .r.cur.sel .t::after{color:#7a3d00}

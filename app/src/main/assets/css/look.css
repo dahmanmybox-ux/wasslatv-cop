@@ -32,31 +32,40 @@
 #ldg{background:var(--w-black),#000!important;gap:0}
 #ldg .lgw{width:min(20vh,140px)}
 #ldg img{display:none!important}
-#ldg .ldn{margin-top:24px;font-size:clamp(18px,2.3vw,26px);font-weight:700;color:#d9efe9;max-width:80%;line-height:1.4}
-#ldg .lds{margin-top:8px;font-size:clamp(15px,1.8vw,19px);color:#8fb9b0;max-width:80%}
+#ldg .ldn{margin-top:18px;font-size:clamp(16px,1.8vw,22px);font-weight:600;color:#d9efe9;max-width:80%;line-height:1.4}
+#ldg .lds{margin-top:8px;padding:8px 18px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(0,0,0,.32);font-size:clamp(14px,1.5vw,17px);color:#a7c7c0;max-width:80%;line-height:1.4}
 #ldg .lds:empty{display:none}
-#ldg .ldh{display:none;margin-top:14px;font-size:15px;color:#7fa8a0}
+#ldg .ldh{display:none;margin-top:10px;font-size:13px;color:#7fa8a0}
 body.tv #ldg.bad .ldh{display:block}
-#ldg.bad .lds{color:#ffb4b4;font-size:clamp(18px,2.2vw,22px);font-weight:700}
+#ldg.bad .lds{border-color:rgba(229,72,77,.28);background:rgba(90,18,22,.24);color:#ffc4c6;font-size:clamp(15px,1.7vw,19px);font-weight:700}
 #ldg.bad .lgr circle{animation:none;stroke:#e5484d}
 #ldg.bad .lgr{animation-play-state:paused;opacity:.55}
 #ldg.bad .lgm{animation:none;opacity:.45}
 #ldg.bad .lgx{display:grid}
-#ldg .ldb{margin-top:16px;gap:12px}
-#ldg .ldb button{min-width:140px;min-height:46px;font-size:17px;border-radius:999px}
+#ldg .ldb{margin-top:12px;gap:10px}
+#ldg .ldb button{min-width:132px;min-height:42px;font-size:15px;border-radius:999px}
 body.tv #ldg.bad .ldb{display:none!important}
 
 /* ---- بطاقتان متطابقتان: القائمة + المعاينة ---- */
 #rmenu .mb{align-items:stretch;gap:24px}
 #rmenu .ml,#rmenu .mp{border:1px solid var(--w-card-bd);border-radius:var(--w-rm);background:var(--w-card);box-shadow:0 12px 34px rgba(0,0,0,.4);overflow:hidden}
 #rmenu .mp{padding:16px;gap:16px;justify-content:flex-start}
-#rmenu .pv{border-radius:12px;background:#000}
+#rmenu .pv{border-radius:12px;background:transparent}
 #rmenu .mi{background:transparent;border:0;border-radius:0;box-shadow:none;padding:14px 0 0;border-top:1px solid rgba(61,201,174,.22)}
 body.rcv #player video.pvid{border:0;border-radius:12px;box-shadow:none}
 #rmenu .rows{padding:8px}
 #rmenu .r{border-bottom:0;border-radius:12px;margin-bottom:4px}
 #rmenu .r.sel{background:linear-gradient(90deg,#12a58d,#0b6154);color:#fff;font-weight:800;outline:3px solid var(--w-focus);outline-offset:-3px;box-shadow:0 0 0 4px rgba(245,176,76,.22)}
 #rmenu .rhead .h svg{vertical-align:-5px;margin-inline-end:8px}
+
+@media (max-width:640px){
+  #rmenu .mb{flex-direction:column;gap:10px;overflow:auto}
+  #rmenu .ml{width:100%;flex:1 1 58%}
+  #rmenu .mp{width:100%;flex:1 1 42%;min-height:0;padding:10px;gap:8px}
+  #rmenu .pv{width:100%;aspect-ratio:16/9}
+  #rmenu .mi{min-height:48px;padding:8px 0}
+  #rmenu .mi img{width:40px;height:40px}
+}
 
 /* ---- الحواف: ثلاثة مقاسات فقط ---- */
 #rbanner{border-radius:var(--w-rm)}

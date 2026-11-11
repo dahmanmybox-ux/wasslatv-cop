@@ -51,7 +51,7 @@
     const fr=document.createDocumentFragment();
     panel.forEach((p,i)=>{
       const r=document.createElement('div');r.className='r pn'+((p.t==='src'&&p.id===active)||(p.v!==undefined&&p.v===$('grp').value)?' cur':'');
-      r.innerHTML='<span class="n"></span><span class="t"><span></span></span><span class="s"></span>';
+      r.innerHTML='<span class="n"></span><span class="t"><span class="chname"></span></span><span class="s"></span>';
       r.children[0].textContent=p.ic||'›';r.children[1].firstChild.textContent=p.nm;r.children[2].textContent=p.ct||'';
       r.onclick=e=>{e.stopPropagation();sel=i;mark();pickPanel()};
       fr.appendChild(r);
@@ -151,7 +151,7 @@
     [...rows.children].forEach((r,i)=>r.classList.toggle('sel',i===sel));
     const r=rows.children[sel];if(r)r.scrollIntoView({block:'nearest'});
     rows.querySelectorAll('.mq').forEach(x=>{x.classList.remove('mq');x.parentNode.classList.remove('mqc')});
-    if(r){const tt=r.querySelector('.t'),sp=tt&&tt.firstChild;if(sp){const d=sp.offsetWidth-tt.clientWidth;if(d>2){sp.style.setProperty('--mq',(rtl()?d+8:-d-8)+'px');sp.classList.add('mq');tt.classList.add('mqc')}}}
+    if(r){const tt=r.querySelector('.t'),sp=tt&&tt.querySelector('.chname');if(sp){const d=sp.scrollWidth-sp.clientWidth;if(d>2){sp.style.setProperty('--mq',(rtl()?d+8:-d-8)+'px');sp.classList.add('mq');tt.classList.add('mqc')}}}
     const g=mi.querySelector('img');
     if(level!=='rows'){
       const p=panel[sel];mi.querySelector('b').textContent=p?p.nm:'';mi.querySelector('small').textContent=p?(p.ct||''):'';g.style.display='none';return;
@@ -238,11 +238,11 @@
   document.addEventListener('keydown',e=>{
     const t=e.target.tagName;
     if(/INPUT|TEXTAREA|SELECT/.test(t)||document.querySelector('dialog[open]')||stOn()||(window.__vodOn&&window.__vodOn())||(window.__qpOn&&window.__qpOn())||e.ctrlKey||e.altKey||e.metaKey)return;
-    const k=e.key,stop=()=>{e.preventDefault();e.stopPropagation()};
+    const k=/^(OK|Select)$/.test(e.key)?'Enter':e.key,stop=()=>{e.preventDefault();e.stopPropagation()};
     if(/^[0-9]$/.test(k)){stop();digit(k);return}
     if(!on)return;
     if(open){menuKey(k,e.repeat);stop();return}
-    if(k==='Enter'){stop();if(!buf&&window.__ldgBad&&window.__ldgBad())window.__ldgRetry();else if(buf)commit();else openL()}
+    if(k==='Enter'){stop();if(buf)commit();else openL()}
     else if(k==='Escape'){if(buf){stop();clearTimeout(bufT);buf='';rn.style.display='none'}}
     else if(k==='ArrowLeft'||k==='ArrowRight'){stop();seekBy(k==='ArrowRight'?10:-10)}
     else if(k==='ArrowUp'||k==='ArrowDown'){stop();zapByNumber(k==='ArrowUp'?1:-1)}
